@@ -19,6 +19,18 @@ public class ProduccionCarneService {
         return this.produccionCarneRepository.findAll();
     }
 
+    public List<ProduccionCarne> getProduccionesCarneByIdAnimal(Long idAnimal){
+        return this.produccionCarneRepository.findByIdAnimal(idAnimal);
+    }
+
+    public List<ProduccionCarne> getProduccionesCarneByIdFinca(Long idFinca){
+        return this.produccionCarneRepository.findByIdFinca(idFinca);
+    }
+
+    public List<ProduccionCarne> getProduccionesCarneByIdLote(Long idLote){
+        return this.produccionCarneRepository.findByIdLote(idLote);
+    }
+
     public Optional<ProduccionCarne> getProduccionCarneById(Long id) {
         return this.produccionCarneRepository.findById(id);
     }

@@ -38,6 +38,36 @@ public class ProduccionCarneRESTController {
                               .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/animal/{idAnimal}")
+    public ResponseEntity<List<ProduccionCarne>> getProduccionCarneByIdAnimal(@PathVariable Long idAnimal){
+        List<ProduccionCarne> produccionesAnimal = this.produccionCarneService.getProduccionesCarneByIdAnimal(idAnimal);
+        if(produccionesAnimal.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(produccionesAnimal, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/finca/{idFinca}")
+    public ResponseEntity<List<ProduccionCarne>> getProduccionCarneByIdFinca(@PathVariable Long idFinca){
+        List<ProduccionCarne> produccionesFinca = this.produccionCarneService.getProduccionesCarneByIdFinca(idFinca);
+        if(produccionesFinca.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(produccionesFinca, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/lote/{idLote}")
+    public ResponseEntity<List<ProduccionCarne>> getProduccionCarneByIdLote(@PathVariable Long idLote){
+        List<ProduccionCarne> produccionesLote = this.produccionCarneService.getProduccionesCarneByIdLote(idLote);
+        if(produccionesLote.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(produccionesLote, HttpStatus.OK);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<ProduccionCarne> saveProduccionCarne(@RequestBody ProduccionCarne produccionCarne) {
         ProduccionCarne produccionCarneCreada = this.produccionCarneService.saveProduccionCarne(produccionCarne);
